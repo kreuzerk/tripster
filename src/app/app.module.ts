@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {AgmCoreModule} from '@agm/core';
-import {MapModule} from './map/map.module';
+import {TripsterMapModule} from './tripster-map/tripster-map.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +14,7 @@ import {MapModule} from './map/map.module';
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDfc-VRTrjcQvepK-TbjJF_JG22BAZkWIk'
         }),
-        MapModule
+        TripsterMapModule
     ],
     providers: [],
     bootstrap: [AppComponent]
