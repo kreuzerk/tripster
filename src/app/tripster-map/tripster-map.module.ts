@@ -4,9 +4,10 @@
 import {NgModule} from '@angular/core';
 import {TripsterMapComponent} from './tripster-map.component';
 import {AgmCoreModule} from '@agm/core';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
-    imports: [AgmCoreModule],
+    imports: [AgmCoreModule, CommonModule],
     declarations: [TripsterMapComponent],
     exports: [TripsterMapComponent]
 })

@@ -1,3 +1,21 @@
 <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-marker *ngFor="let stop of stops"
+                [latitude]="stop.lat"
+                [longitude]="stop.lng">
+        <h1>{{stop}}</h1>
+    </agm-marker>
 </agm-map>
+
+<!--
+ <agm-marker *ngFor="let hospital of hospitals; let i = index"
+                    (markerClick)="clickedMarker(hospital, i)"
+                    [latitude]="hospital.Lat"
+                    [longitude]="hospital.Long"
+                    [markerDraggable]="false"
+                    [iconUrl]="'assets/images/map_pin.png'"
+                    class="hospitalMarker">
+                    <agm-info-window>
+                        <app-google-maps-info-window [hospital]="hospital" [columnHeaders]="columnHeaders"></app-google-maps-info-window>
+                    </agm-info-window>
+                </agm-marker>
+-->
