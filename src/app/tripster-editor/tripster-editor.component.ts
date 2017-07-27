@@ -9,9 +9,11 @@ import {Component} from '@angular/core';
 })
 export class TripsterEditorComponent {
 
-    private static stopsCounter = 1;
+    private stopsCounter = 1;
+    stops = [this.stopsCounter];
 
-    public getStopCount(): number {
-        return TripsterEditorComponent.stopsCounter;
+    public addStop() {
+        this.stopsCounter += 1
+        this.stops.push(this.stopsCounter)
     }
 }

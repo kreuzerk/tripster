@@ -9,6 +9,7 @@
                 <input type="text" class="form-control" id="destinationInput"
                        name="destination" required placeholder="Enter your destination"
                        [(ngModel)]="destinationModel"
+                       (blur)="newDestinationInput()"
                        #destination="ngModel">
                 <div *ngIf="destination.errors && (destination.dirty || destination.touched)"
                      class="alert alert-danger">

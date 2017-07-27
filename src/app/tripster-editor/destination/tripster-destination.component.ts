@@ -1,7 +1,7 @@
 /**
  * Created by kevinkreuzer on 27.07.17.
  */
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
     selector: 'tripster-destination',
@@ -10,5 +10,10 @@ import {Component, Input} from '@angular/core';
 export class TripsterDestinationComponent {
 
     @Input() counter: number;
+    @Output() onDestinationCreated = new EventEmitter<any>();
     destinationModel: any;
+
+    public newDestinationInput(): void {
+        this.onDestinationCreated.next();
+    }
 }
