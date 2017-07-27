@@ -1,7 +1,7 @@
 /**
  * Created by kevinkreuzer on 27.07.17.
  */
-import {Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
@@ -19,8 +19,7 @@ export class TripsterDestinationComponent implements OnInit {
     @ViewChild('search')
     public searchElementRef: ElementRef;
 
-    constructor(private mapsAPILoader: MapsAPILoader,
-                private ngZone: NgZone) {
+    constructor(private mapsAPILoader: MapsAPILoader) {
     }
 
     ngOnInit(): void {
@@ -38,16 +37,12 @@ export class TripsterDestinationComponent implements OnInit {
                 types: ['address']
             });
             autocomplete.addListener('place_changed', () => {
-                this.ngZone.run(() => {
-                    const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-                    if (place.geometry === undefined || place.geometry === null) {
-                        return;
-                    }
-
-                    console.log(place.geometry.location.lat())
-                    console.log(place.geometry.location.lng())
-                });
+                const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+                if (place.geometry === undefined || place.geometry === null) {
+                    return;
+                }
+                console.log(place.geometry.location.lat())
+                console.log(place.geometry.location.lng())
             });
         });
     }
