@@ -4,17 +4,23 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {AgmCoreModule} from '@agm/core';
 import {TripsterMapModule} from './tripster-map/tripster-map.module';
+import {TripsterEditorComponent} from './tripster-editor/tripster-editor.component';
+import {TripsterDestinationComponent} from './tripster-editor/destination/tripster-destination.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        TripsterEditorComponent,
+        TripsterDestinationComponent
     ],
     imports: [
         BrowserModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDfc-VRTrjcQvepK-TbjJF_JG22BAZkWIk'
         }),
-        TripsterMapModule
+        TripsterMapModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

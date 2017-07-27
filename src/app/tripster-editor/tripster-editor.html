@@ -1,0 +1,5 @@
+<tripster-destination
+        *ngFor="let stop of stops"
+        [counter]="stop"
+        (onDestinationCreated)="addStop()">
+</tripster-destination>
