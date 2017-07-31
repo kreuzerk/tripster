@@ -4,6 +4,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tripster-address-search',
@@ -16,26 +17,25 @@ export class TripsterAddressSearchComponent implements OnInit {
     public searchElementRef: ElementRef;
 
     constructor(private mapsAPILoader: MapsAPILoader) {
+        Observable.fromPromise(this.mapsAPILoader.load())
+            .subscribe(_ => this.initAddressAutoComplete())
     }
 
     ngOnInit(): void {
         this.addressSearchControl = new FormControl()
-        this.initAddressAutoComplete()
     }
 
     private initAddressAutoComplete(): void {
-        this.mapsAPILoader.load().then(() => {
-            const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-                types: ['address']
-            });
-            autocomplete.addListener('place_changed', () => {
-                const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-                if (place.geometry === undefined || place.geometry === null) {
-                    return;
-                }
-                console.log(place.geometry.location.lat())
-                console.log(place.geometry.location.lng())
-            });
+        const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+            types: ['address']
+        });
+        autocomplete.addListener('place_changed', () => {
+            const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+            if (place.geometry === undefined || place.geometry === null) {
+                return;
+            }
+            console.log(place.geometry.location.lat())
+            console.log(place.geometry.location.lng())
         });
     }
 }
