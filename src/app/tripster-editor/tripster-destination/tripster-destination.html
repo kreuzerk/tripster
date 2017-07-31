@@ -6,8 +6,7 @@
         <form>
             <div class="form-group">
                 <label for="destinationInput">Email address</label>
-                <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
-                       type="text" class="form-control" #search [formControl]="addressSearchControl">
+                <tripster-address-search></tripster-address-search>
                 <input type="text" class="form-control" id="destinationInput"
                        name="destination" required placeholder="Enter your destination"
                        [(ngModel)]="destinationModel"

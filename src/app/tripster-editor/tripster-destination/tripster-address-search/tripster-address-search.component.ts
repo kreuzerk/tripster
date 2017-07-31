@@ -1,20 +1,16 @@
 /**
- * Created by kevinkreuzer on 27.07.17.
+ * Created by kevinkreuzer on 31.07.17.
  */
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
-import {} from '@types/googlemaps';
+import {FormControl} from '@angular/forms';
 
 @Component({
-    selector: 'tripster-destination',
-    templateUrl: './tripster-destination.html'
+    selector: 'tripster-address-search',
+    templateUrl: './tripster-address-search.html'
 })
-export class TripsterDestinationComponent implements OnInit {
+export class TripsterAddressSearchComponent implements OnInit {
 
-    @Input() counter: number;
-    @Output() onDestinationCreated = new EventEmitter<any>();
-    destinationModel: any;
     addressSearchControl: FormControl
     @ViewChild('search')
     public searchElementRef: ElementRef;
@@ -25,10 +21,6 @@ export class TripsterDestinationComponent implements OnInit {
     ngOnInit(): void {
         this.addressSearchControl = new FormControl()
         this.initAddressAutoComplete()
-    }
-
-    public newDestinationInput(): void {
-        this.onDestinationCreated.next();
     }
 
     private initAddressAutoComplete(): void {
