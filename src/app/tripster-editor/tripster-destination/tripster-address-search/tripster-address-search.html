@@ -5,8 +5,9 @@
        type="text"
        class="form-control"
        #search
+       (blur)="validateAddress()"
        [formControl]="addressSearchControl">
-<div *ngIf="addressSearchControl.errors && (addressSearchControl.dirty || addressSearchControl.touched)"
+<div *ngIf="(addressSearchControl.errors || !isAddressValid) && (addressSearchControl.dirty || addressSearchControl.touched)"
      class="alert alert-danger">
     Please select a valid destination
 </div>
