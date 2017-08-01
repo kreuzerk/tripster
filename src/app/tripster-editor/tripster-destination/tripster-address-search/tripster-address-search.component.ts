@@ -1,10 +1,12 @@
 /**
  * Created by kevinkreuzer on 31.07.17.
  */
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MapsAPILoader} from '@agm/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core'
+import {MapsAPILoader} from '@agm/core'
+import {FormControl, Validators} from '@angular/forms'
+import {Observable} from 'rxjs/Observable'
+import 'rxjs/add/observable/fromPromise'
+import {TripsterAddress} from './tripster-address.model';
 
 @Component({
     selector: 'tripster-address-search',
@@ -12,6 +14,7 @@ import {Observable} from 'rxjs';
 })
 export class TripsterAddressSearchComponent implements OnInit {
 
+    @Output() onAddressChanged = new EventEmitter<TripsterAddress>();
     addressSearchControl: FormControl
     @ViewChild('search')
     public searchElementRef: ElementRef;
@@ -22,20 +25,26 @@ export class TripsterAddressSearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.addressSearchControl = new FormControl()
+        this.addressSearchControl = new FormControl('', Validators.required)
     }
 
     private initAddressAutoComplete(): void {
         const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
             types: ['address']
         });
+
         autocomplete.addListener('place_changed', () => {
             const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-            if (place.geometry === undefined || place.geometry === null) {
-                return;
-            }
-            console.log(place.geometry.location.lat())
-            console.log(place.geometry.location.lng())
-        });
+            this.emitPlaceChange(place)
+        })
+    }
+
+    private emitPlaceChange(place: google.maps.places.PlaceResult): void {
+        if (place.geometry === undefined || place.geometry === null) {
+            return;
+        }
+        const latitude = place.geometry.location.lat()
+        const longitude = place.geometry.location.lng()
+        this.onAddressChanged.next({latitude, longitude})
     }
 }
