@@ -3,6 +3,7 @@
  */
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LatLngLiteral} from '@agm/core';
+import {TripsterDestination} from '../tripster-editor/tripster-destination/tripster-destination.model';
 
 @Component({
     selector: 'tripster-map',
@@ -32,5 +33,12 @@ export class TripsterMapComponent implements OnInit {
 
     private createStop(lat: number, lng: number): any {
         return {lat, lng}
+    }
+
+    public addMarker(newDestination: TripsterDestination): void {
+        const coordinates = newDestination.coordinates
+        const stop = this.createStop(coordinates.latitude, coordinates.longitude)
+        this.stops.push(stop)
+        this.paths.push(stop)
     }
 }
