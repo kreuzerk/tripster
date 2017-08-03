@@ -10,12 +10,14 @@ import {TripsterInputsComponent} from './tipster-inputs/tripster-inputs.componen
 import {TripsterMapComponent} from './tripster-map/tripster-map.component';
 import {TripsterEditorComponent} from './trispter-editor.component';
 import {AgmCoreModule} from '@agm/core';
+import {tripsterEditorRoutes} from './tripster-editor.routing';
 
 @NgModule({
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        AgmCoreModule
+        AgmCoreModule,
+        tripsterEditorRoutes
     ],
     declarations: [
         TripsterEditorComponent,
