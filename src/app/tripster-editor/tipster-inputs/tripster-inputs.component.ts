@@ -5,10 +5,10 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {TripsterDestination} from './tripster-destination/tripster-destination.model';
 
 @Component({
-    selector: 'tripster-editor',
-    templateUrl: './tripster-editor-inputs.html'
+    selector: 'tripster-inputs',
+    templateUrl: './tripster-inputs.html'
 })
-export class TripsterEditorInputsComponent {
+export class TripsterInputsComponent {
 
     @Output() onNewDestination = new EventEmitter<TripsterDestination>()
     private destinationCounter = 1
