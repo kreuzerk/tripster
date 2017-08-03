@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LatLngLiteral} from '@agm/core';
-import {TripsterDestination} from '../tripster-editor-inputs/tripster-destination/tripster-destination.model';
+import {TripsterDestination} from '../inputs/tripster-destination/tripster-destination.model';
 import {TripsterPath} from './tripster-path.model';
 
 @Component({
