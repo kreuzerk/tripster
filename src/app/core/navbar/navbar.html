@@ -5,5 +5,13 @@
                 <img alt="Brand" src="../../../assets/logo.png"/>
             </a>
         </div>
+        <div uib-collapse="navCollapsed" class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="nav-item" *ngFor="let navItem of navItems">
+                    <a class="nav-link" [routerLink]="[navItem.routerLink]" routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact: true}">{{ navItem.displayName }}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>

@@ -3,8 +3,8 @@
  */
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LatLngLiteral} from '@agm/core';
-import {TripsterDestination} from '../tripster-editor/tripster-destination/tripster-destination.model';
 import {TripsterPath} from './tripster-path.model';
+import {TripsterDestination} from '../tipster-inputs/tripster-destination/tripster-destination.model';
 
 @Component({
     selector: 'tripster-map',
@@ -49,5 +49,4 @@ export class TripsterMapComponent implements OnInit {
             this.paths.push(new TripsterPath(destination))
         }
     }
-
 }

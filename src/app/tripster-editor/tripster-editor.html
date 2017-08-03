@@ -1,5 +1,10 @@
-<tripster-destination
-        *ngFor="let destination of destinations"
-        [counter]="stop"
-        (onDestinationCreated)="newDestinationCreated($event)">
-</tripster-destination>
+<div class="col-md-12 editor-container">
+    <div class="row">
+        <div class="col-sm-3">
+            <tripster-inputs (onNewDestination)="addDestinationToMap($event)"></tripster-inputs>
+        </div>
+        <div class="col-sm-9">
+            <tripster-map></tripster-map>
+        </div>
+    </div>
+</div>
