@@ -1,14 +1,20 @@
 <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker *ngFor="let stop of stops"
-                [latitude]="stop.lat"
-                [longitude]="stop.lng"
+    <agm-marker *ngFor="let destination of destinations"
+                [latitude]="destination.lat"
+                [longitude]="destination.lng"
                 [openInfoWindow]="true">
         <agm-info-window>
             <h3>Info window</h3>
-            <pre>{{stop | json}}</pre>
+            <pre>{{destination | json}}</pre>
         </agm-info-window>
     </agm-marker>
-    <agm-polygon [paths]="paths" [geodesic]="true" [fillOpacity]="0.0">
-    </agm-polygon>
+    <agm-polyline *ngFor="let path of paths">
+        <div *ngIf="path.isComplete()">
+            <agm-polyline-point [latitude]="path.getStartPoint().lat" [longitude]="path.getStartPoint().lng">
+            </agm-polyline-point>
+            <agm-polyline-point [latitude]="path.getEndPoint().lat" [longitude]="path.getEndPoint().lng">
+            </agm-polyline-point>
+        </div>
+    </agm-polyline>
 </agm-map>
 

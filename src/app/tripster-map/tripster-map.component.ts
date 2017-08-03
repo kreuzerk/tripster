@@ -4,6 +4,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LatLngLiteral} from '@agm/core';
 import {TripsterDestination} from '../tripster-editor/tripster-destination/tripster-destination.model';
+import {TripsterPath} from './tripster-path.model';
 
 @Component({
     selector: 'tripster-map',
@@ -15,30 +16,38 @@ export class TripsterMapComponent implements OnInit {
 
     lat = 46.288994
     lng = 7.9368406
-    stops = []
-    paths: Array<LatLngLiteral> = [
-        {lat: 46.288994, lng: 7.9368406},
-        {lat: 47.3775499, lng: 8.4666756},
-        {lat: 47.3670099, lng: 9.7004806}
-    ]
+    destinations: Array<LatLngLiteral> = []
+    paths: Array<TripsterPath> = []
 
     constructor() {
     }
 
     ngOnInit(): void {
-        this.stops.push(this.createStop(46.288994, 7.9368406))
-        this.stops.push(this.createStop(47.3775499, 8.4666756))
-        this.stops.push(this.createStop(47.3670099, 9.7004806))
     }
 
-    private createStop(lat: number, lng: number): any {
+    private createLatLngLiteral(lat: number, lng: number): any {
         return {lat, lng}
     }
 
-    public addMarker(newDestination: TripsterDestination): void {
+    public createNewDestination(newDestination: TripsterDestination): void {
         const coordinates = newDestination.coordinates
-        const stop = this.createStop(coordinates.latitude, coordinates.longitude)
-        this.stops.push(stop)
-        this.paths.push(stop)
+        const destination = this.createLatLngLiteral(coordinates.latitude, coordinates.longitude)
+        this.drawMarker(destination)
+        this.drawPath(destination)
     }
+
+    private drawMarker(destination: LatLngLiteral): void {
+        this.destinations.push(destination)
+    }
+
+    private drawPath(destination: LatLngLiteral): void {
+        const lastPath = this.paths[this.paths.length - 1]
+        if (!lastPath) {
+            this.paths.push(new TripsterPath(destination))
+        } else {
+            lastPath.setEndpoint(destination)
+            this.paths.push(new TripsterPath(destination))
+        }
+    }
+
 }
