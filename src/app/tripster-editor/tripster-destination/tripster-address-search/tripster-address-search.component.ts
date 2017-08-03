@@ -6,7 +6,7 @@ import {MapsAPILoader} from '@agm/core'
 import {FormControl, Validators} from '@angular/forms'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/observable/fromPromise'
-import {TripsterAddress} from './tripster-address.model';
+import {TripsterAddressCoordinates} from './tripster-address-coordinates.model';
 
 @Component({
     selector: 'tripster-address-search',
@@ -14,7 +14,7 @@ import {TripsterAddress} from './tripster-address.model';
 })
 export class TripsterAddressSearchComponent implements OnInit {
 
-    @Output() onAddressChanged = new EventEmitter<TripsterAddress>()
+    @Output() onAddressChanged = new EventEmitter<TripsterAddressCoordinates>()
     @ViewChild('search')
     searchElementRef: ElementRef
     addressSearchControl: FormControl

@@ -5,7 +5,9 @@
     <div class="panel-body">
         <div>
             <label for="destinationInput">Email address</label>
-            <tripster-address-search id="destinationInput"></tripster-address-search>
+            <tripster-address-search id="destinationInput"
+                                     (onAddressChanged)="createDestination($event)">
+            </tripster-address-search>
         </div>
     </div>
 </div>
