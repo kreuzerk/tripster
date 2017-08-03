@@ -46,6 +46,7 @@ export class TripsterMapComponent implements OnInit {
             this.paths.push(new TripsterPath(destination))
         } else {
             lastPath.setEndpoint(destination)
+            this.paths.push(new TripsterPath(destination))
         }
     }
 
