@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {TripsterMapComponent} from './tripster-map/tripster-map.component';
-import {TripsterDestination} from './tripster-editor/tripster-destination/tripster-destination.model';
+import {TripsterDestination} from './tripster-editor-inputs/tripster-destination/tripster-destination.model';
 
 @Component({
     selector: 'app-root',

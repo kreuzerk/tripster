@@ -6,9 +6,9 @@ import {TripsterDestination} from './tripster-destination/tripster-destination.m
 
 @Component({
     selector: 'tripster-editor',
-    templateUrl: './tripster-editor.html'
+    templateUrl: './tripster-editor-inputs.html'
 })
-export class TripsterEditorComponent {
+export class TripsterEditorInputsComponent {
 
     @Output() onNewDestination = new EventEmitter<TripsterDestination>()
     private destinationCounter = 1
