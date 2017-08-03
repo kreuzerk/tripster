@@ -7,7 +7,8 @@ import {TripsterDestination} from './tipster-inputs/tripster-destination/tripste
 
 @Component({
     selector: 'tripster-editor',
-    templateUrl: './tripster-editor.html'
+    templateUrl: './tripster-editor.html',
+    styleUrls: ['./tripster-editor.css']
 })
 export class TripsterEditorComponent {
 
