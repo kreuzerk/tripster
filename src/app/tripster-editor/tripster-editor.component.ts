@@ -11,8 +11,8 @@ import {TripsterDestination} from './tripster-destination/tripster-destination.m
 export class TripsterEditorComponent {
 
     @Output() onNewDestination = new EventEmitter<TripsterDestination>()
-    private stopsCounter = 1
-    stops = [this.stopsCounter]
+    private destinationCounter = 1
+    destinations = [this.destinationCounter]
 
     public newDestinationCreated(newDestination: TripsterDestination): void {
         this.onNewDestination.next(newDestination)
@@ -20,7 +20,7 @@ export class TripsterEditorComponent {
     }
 
     public addStop() {
-        this.stopsCounter += 1
-        this.stops.push(this.stopsCounter)
+        this.destinationCounter += 1
+        this.destinations.push(this.destinationCounter)
     }
 }

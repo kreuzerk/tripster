@@ -8,12 +8,11 @@ import {TripsterDestination} from './tripster-editor/tripster-destination/tripst
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'app';
 
     @ViewChild(TripsterMapComponent)
     private tripsterMap: TripsterMapComponent
 
     addDestinationToMap(newDestination: TripsterDestination): void {
-        this.tripsterMap.addMarker(newDestination)
+        this.tripsterMap.createNewDestination(newDestination)
     }
 }
