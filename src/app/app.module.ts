@@ -8,6 +8,7 @@ import {TripsterEditorComponent} from './tripster-editor/tripster-editor.compone
 import {TripsterDestinationComponent} from './tripster-editor/tripster-destination/tripster-destination.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TripsterAddressSearchComponent} from './tripster-editor/tripster-destination/tripster-address-search/tripster-address-search.component';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import {TripsterAddressSearchComponent} from './tripster-editor/tripster-destina
     ],
     imports: [
         BrowserModule,
+        CoreModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDfc-VRTrjcQvepK-TbjJF_JG22BAZkWIk',
             libraries: ['places']
