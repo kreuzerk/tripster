@@ -1,0 +1,9 @@
+img {
+    max-width: 190px;
+    max-height: 50px;
+}
+
+.navbar-default {
+    height: 60px;
+    background-color: white;
+}

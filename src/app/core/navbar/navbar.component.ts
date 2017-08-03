@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'tripster-navbar',
-    templateUrl: './navbar.html'
+    templateUrl: './navbar.html',
+    styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
 }
