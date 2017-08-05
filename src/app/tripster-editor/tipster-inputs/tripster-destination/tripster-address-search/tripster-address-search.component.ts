@@ -32,7 +32,7 @@ export class TripsterAddressSearchComponent implements OnInit {
 
     private initAddressAutoComplete(): void {
         this.autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-            types: ['address']
+            types: ['geocode']
         });
 
         this.autocomplete.addListener('place_changed', () => {
