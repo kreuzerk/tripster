@@ -14,9 +14,6 @@ import {TripsterMapComponent} from './tripster-map/tripster-map.component';
 })
 export class TripsterEditorComponent implements OnInit {
 
-    @ViewChild(TripsterMapComponent)
-    private tripsterMap: TripsterMapComponent
-
     constructor(private route: ActivatedRoute, private router: Router, private tripUIDService: TripUIDService) {
     }
 
@@ -32,9 +29,5 @@ export class TripsterEditorComponent implements OnInit {
                 }
             }
         )
-    }
-
-    addDestinationToMap(newDestination: TripsterDestination): void {
-        this.tripsterMap.createNewDestination(newDestination)
     }
 }

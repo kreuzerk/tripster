@@ -1,8 +1,9 @@
 /**
  * Created by kevinkreuzer on 27.07.17.
  */
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {TripsterDestination} from './tripster-destination/tripster-destination.model';
+import {TripService} from '../trips.service';
 
 @Component({
     selector: 'tripster-inputs',
@@ -10,12 +11,14 @@ import {TripsterDestination} from './tripster-destination/tripster-destination.m
 })
 export class TripsterInputsComponent {
 
-    @Output() onNewDestination = new EventEmitter<TripsterDestination>()
     private destinationCounter = 1
     destinations = [this.destinationCounter]
 
+    constructor(private tripService: TripService) {
+    }
+
     public newDestinationCreated(newDestination: TripsterDestination): void {
-        this.onNewDestination.next(newDestination)
+        this.tripService.addDestination(newDestination)
         this.addStop()
     }
 
