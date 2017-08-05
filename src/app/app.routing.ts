@@ -6,6 +6,7 @@ import {ModuleWithProviders} from '@angular/core';
 
 const routes: Routes = [
     {path: '', redirectTo: 'editor', pathMatch: 'full'},
+    {path: 'editor', loadChildren: './tripster-editor/tripster-editor.module#TripsterEditorModule'},
     {path: 'editor/:trip-uid', loadChildren: './tripster-editor/tripster-editor.module#TripsterEditorModule'}
 ]
 

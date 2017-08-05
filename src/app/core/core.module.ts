@@ -6,6 +6,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {throwIfAlreadyLoaded} from './module-import-guard';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {LocalStorageService} from './localStorage/localStorage.service';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import {RouterModule} from '@angular/router';
         RouterModule
     ],
     declarations: [NavbarComponent],
-    exports: [NavbarComponent]
+    exports: [NavbarComponent],
+    providers: [LocalStorageService]
 })
 export class CoreModule {
 
