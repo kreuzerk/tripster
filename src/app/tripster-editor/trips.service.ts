@@ -13,7 +13,13 @@ export class TripService {
     private trips$ = new Subject<TripsterDestination>()
 
     constructor(private database: AngularFireDatabase) {
-        this.database.list('destinations')
+
+        this.database.list('/destinations', {
+            query: {
+                orderByChild: 'id',
+                equalTo: '44828793-2d21-a116-ca34-f3acd7d56336'
+            }
+        })
             .subscribe(destinations => console.log('Retrieved destinations', destinations))
     }
 
