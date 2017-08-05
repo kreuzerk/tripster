@@ -7,11 +7,13 @@ import {throwIfAlreadyLoaded} from './module-import-guard';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {LocalStorageService} from './localStorage/localStorage.service';
+import {TripsterEditorModule} from '../tripster-editor/tripster-editor.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        TripsterEditorModule
     ],
     declarations: [NavbarComponent],
     exports: [NavbarComponent],

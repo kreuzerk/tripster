@@ -11,6 +11,7 @@ import {TripsterMapComponent} from './tripster-map/tripster-map.component';
 import {TripsterEditorComponent} from './trispter-editor.component';
 import {AgmCoreModule} from '@agm/core';
 import {tripsterEditorRoutes} from './tripster-editor.routing';
+import {NewTripComponent} from './new-trip/new-trip.component';
 
 @NgModule({
     imports: [
@@ -24,9 +25,10 @@ import {tripsterEditorRoutes} from './tripster-editor.routing';
         TripsterInputsComponent,
         TripsterDestinationComponent,
         TripsterAddressSearchComponent,
-        TripsterMapComponent
+        TripsterMapComponent,
+        NewTripComponent
     ],
-    exports: [TripsterEditorComponent]
+    exports: [TripsterEditorComponent, NewTripComponent]
 })
 export class TripsterEditorModule {
 }
