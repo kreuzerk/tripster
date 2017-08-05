@@ -20,7 +20,11 @@ export class TripService {
                 equalTo: '44828793-2d21-a116-ca34-f3acd7d56336'
             }
         })
-            .subscribe(destinations => console.log('Retrieved destinations', destinations))
+            .subscribe((destinations: any) => {
+                destinations.forEach((destination: any) => {
+                    this.addDestination(destination)
+                })
+            })
     }
 
     public addDestination(destination: TripsterDestination) {
