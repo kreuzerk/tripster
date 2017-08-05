@@ -5,6 +5,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LatLngLiteral} from '@agm/core';
 import {TripsterPath} from './tripster-path.model';
 import {TripsterDestination} from '../tipster-inputs/tripster-destination/tripster-destination.model';
+import {TripService} from '../trips.service';
 
 @Component({
     selector: 'tripster-map',
@@ -19,17 +20,19 @@ export class TripsterMapComponent implements OnInit {
     destinations: Array<LatLngLiteral> = []
     paths: Array<TripsterPath> = []
 
-    constructor() {
+    constructor(private tripsService: TripService) {
     }
 
     ngOnInit(): void {
+        this.tripsService.getDestinations()
+            .subscribe((destination: TripsterDestination) => this.createNewDestination(destination))
     }
 
     private createLatLngLiteral(lat: number, lng: number): any {
         return {lat, lng}
     }
 
-    public createNewDestination(newDestination: TripsterDestination): void {
+    private createNewDestination(newDestination: TripsterDestination): void {
         const coordinates = newDestination.coordinates
         const destination = this.createLatLngLiteral(coordinates.latitude, coordinates.longitude)
         this.drawMarker(destination)

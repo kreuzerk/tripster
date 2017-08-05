@@ -13,6 +13,7 @@ import {AgmCoreModule} from '@agm/core';
 import {tripsterEditorRoutes} from './tripster-editor.routing';
 import {NewTripComponent} from './new-trip/new-trip.component';
 import {TripUIDService} from './trip-uid.service';
+import {TripService} from './trips.service';
 
 @NgModule({
     imports: [
@@ -30,7 +31,10 @@ import {TripUIDService} from './trip-uid.service';
         NewTripComponent
     ],
     exports: [TripsterEditorComponent, NewTripComponent],
-    providers: [TripUIDService]
+    providers: [
+        TripService,
+        TripUIDService
+    ]
 })
 export class TripsterEditorModule {
 }
