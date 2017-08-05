@@ -1,7 +1,7 @@
-import {CommonModule} from '@angular/common';
 /**
  * Created by kevinkreuzer on 03.08.17.
  */
+import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TripsterAddressSearchComponent} from './tipster-inputs/tripster-destination/tripster-address-search/tripster-address-search.component';
@@ -12,6 +12,7 @@ import {TripsterEditorComponent} from './trispter-editor.component';
 import {AgmCoreModule} from '@agm/core';
 import {tripsterEditorRoutes} from './tripster-editor.routing';
 import {NewTripComponent} from './new-trip/new-trip.component';
+import {TripUIDService} from './trip-uid.service';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import {NewTripComponent} from './new-trip/new-trip.component';
         TripsterMapComponent,
         NewTripComponent
     ],
-    exports: [TripsterEditorComponent, NewTripComponent]
+    exports: [TripsterEditorComponent, NewTripComponent],
+    providers: [TripUIDService]
 })
 export class TripsterEditorModule {
 }

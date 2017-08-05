@@ -2,16 +2,15 @@
  * Created by kevinkreuzer on 03.08.17.
  */
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {TripsterMapComponent} from './tripster-map/tripster-map.component';
-import {TripsterDestination} from './tipster-inputs/tripster-destination/tripster-destination.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {TripsterDestination} from './tipster-inputs/tripster-destination/tripster-destination.model';
 import {TripUIDService} from './trip-uid.service';
+import {TripsterMapComponent} from './tripster-map/tripster-map.component';
 
 @Component({
     selector: 'tripster-editor',
     templateUrl: './tripster-editor.html',
-    styleUrls: ['./tripster-editor.css'],
-    providers: [TripUIDService]
+    styleUrls: ['./tripster-editor.css']
 })
 export class TripsterEditorComponent implements OnInit {
 

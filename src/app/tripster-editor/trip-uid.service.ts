@@ -19,7 +19,15 @@ export class TripUIDService {
         return tripUID
     }
 
+    public createAndSaveNewTripUID(): string {
+        const newTripUID = UUID.UUID()
+        this.saveTripUID(newTripUID)
+        return newTripUID
+    }
+
     public saveTripUID(uid: string): void {
         this.localStorageService.setItem(this.TRIPSTER_UID_KEY, uid)
     }
+
+
 }
