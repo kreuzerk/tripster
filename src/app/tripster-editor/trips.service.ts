@@ -14,14 +14,15 @@ export class TripService {
 
     constructor(private database: AngularFireDatabase) {
 
-        this.database.list('/destinations', {
+        this.database.list('/trips', {
             query: {
                 orderByChild: 'id',
                 equalTo: '44828793-2d21-a116-ca34-f3acd7d56336'
             }
         })
-            .subscribe((destinations: any) => {
-                destinations.forEach((destination: any) => {
+            .subscribe((trips: any) => {
+                const trip: any = trips[0]
+                trip.destinations.forEach((destination: any) => {
                     this.addDestination(destination)
                 })
             })
