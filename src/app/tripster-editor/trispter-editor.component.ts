@@ -3,8 +3,8 @@
  */
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TripsterDestination} from './tipster-inputs/tripster-destination/tripster-destination.model';
-import {TripUIDService} from './trip-uid.service';
+import {TripsterDestination} from './shared/model/tripster-destination.model';
+import {TripUIDService} from './shared/services/trip-uid.service';
 import {TripsterMapComponent} from './tripster-map/tripster-map.component';
 
 @Component({

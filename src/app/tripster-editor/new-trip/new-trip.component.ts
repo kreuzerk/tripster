@@ -2,7 +2,7 @@
  * Created by kevinkreuzer on 05.08.17.
  */
 import {Component} from '@angular/core';
-import {TripUIDService} from '../trip-uid.service';
+import {TripUIDService} from '../shared/services/trip-uid.service';
 import {Router} from '@angular/router';
 
 @Component({

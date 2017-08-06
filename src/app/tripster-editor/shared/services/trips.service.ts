@@ -2,12 +2,11 @@
  * Created by kevinkreuzer on 05.08.17.
  */
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {TripsterDestination} from './tipster-inputs/tripster-destination/tripster-destination.model';
 import {AngularFireDatabase} from 'angularfire2/database';
-import 'rxjs/add/operator/switchMap'
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
+import {ObjectHelper} from '../../../core/helpers/object.helper.service';
+import {TripsterDestination} from '../model/tripster-destination.model';
 
 @Injectable()
 export class TripService {
@@ -18,10 +17,10 @@ export class TripService {
         equalTo: '44828793-2d21-a116-ca34-f3acd7d56336'
     }
 
-    constructor(private database: AngularFireDatabase) {
+    constructor(private database: AngularFireDatabase, private objectHelper: ObjectHelper) {
         this.trips$ = this.database.list('/trips', {query: this.query})
             .map((trip: any) => trip[0].destinations)
-            .map((destinations: any) => Object.keys(destinations).map(key => destinations[key]))
+            .map((destinations: any) => this.objectHelper.transformObjectToArray(destinations))
     }
 
     public addDestination(destination: TripsterDestination) {

@@ -12,8 +12,8 @@ import {TripsterEditorComponent} from './trispter-editor.component';
 import {AgmCoreModule} from '@agm/core';
 import {tripsterEditorRoutes} from './tripster-editor.routing';
 import {NewTripComponent} from './new-trip/new-trip.component';
-import {TripUIDService} from './trip-uid.service';
-import {TripService} from './trips.service';
+import {TripUIDService} from './shared/services/trip-uid.service';
+import {TripService} from './shared/services/trips.service';
 
 @NgModule({
     imports: [

@@ -2,7 +2,7 @@
  * Created by kevinkreuzer on 05.08.17.
  */
 import {Injectable} from '@angular/core';
-import {LocalStorageService} from '../core/localStorage/localStorage.service';
+import {LocalStorageService} from '../../../core/localStorage/localStorage.service';
 import {UUID} from 'angular2-uuid';
 
 @Injectable()

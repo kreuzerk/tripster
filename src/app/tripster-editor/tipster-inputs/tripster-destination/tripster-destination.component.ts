@@ -3,8 +3,8 @@
  */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {} from '@types/googlemaps';
-import {TripsterAddressCoordinates} from './tripster-address-search/tripster-address-coordinates.model';
-import {TripsterDestination} from './tripster-destination.model';
+import {TripsterAddressCoordinates} from '../../shared/model/tripster-address-coordinates.model';
+import {TripsterDestination} from '../../shared/model/tripster-destination.model';
 
 @Component({
     selector: 'tripster-destination',

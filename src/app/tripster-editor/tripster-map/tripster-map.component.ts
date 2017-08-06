@@ -4,8 +4,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LatLngLiteral} from '@agm/core';
 import {TripsterPath} from './tripster-path.model';
-import {TripsterDestination} from '../tipster-inputs/tripster-destination/tripster-destination.model';
-import {TripService} from '../trips.service';
+import {TripsterDestination} from '../shared/model/tripster-destination.model';
+import {TripService} from '../shared/services/trips.service';
 
 @Component({
     selector: 'tripster-map',
