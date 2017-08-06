@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {ObjectHelper} from '../../../core/helpers/object.helper.service';
 import {TripsterDestination} from '../model/tripster-destination.model';
+import {TripUIDService} from './trip-uid.service';
 
 @Injectable()
 export class TripService {
@@ -26,6 +27,15 @@ export class TripService {
     public addDestination(destination: TripsterDestination) {
         const postKey = this.database.database.ref().child('destinations').push().key
         this.database.database.ref().update({['trips/0/destinations/' + postKey]: destination})
+    }
+
+    public createNewTrip(tripId: string): void {
+        const newTrip = {
+            destinations: [],
+            id: tripId
+        }
+        const postKey = this.database.database.ref().child('trips').push().key
+        this.database.database.ref().update({['trips/' + postKey]: newTrip})
     }
 
     public getDestinations(): Observable<Array<TripsterDestination>> {
