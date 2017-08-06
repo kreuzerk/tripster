@@ -11,33 +11,23 @@ import {AngularFireDatabase} from 'angularfire2/database';
 export class TripService {
 
     private trips$ = new Subject<TripsterDestination>()
+    private query = {
+        orderByChild: 'id',
+        equalTo: '44828793-2d21-a116-ca34-f3acd7d56336'
+    }
 
     constructor(private database: AngularFireDatabase) {
+        this.database.list('/trips', {query: this.query})
+            .subscribe((trips: any) => this.displayTrips(trips))
+    }
 
-        /*
-         this.database.list('/trips', {
-         query: {
-         orderByChild: 'id',
-         equalTo: '44828793-2d21-a116-ca34-f3acd7d56336'
-         }
-         })
-         .subscribe((trips: any) => {
-         const trip: any = trips[0]
-         trip.destinations.forEach((destination: any) => {
-         this.addDestination(destination)
-         })
-         })
-         */
-        this.database.database.ref('/trips')
-            .on('value', (snapshot) => {
-                const trips = snapshot.val()
-                const filtered = trips.filter((trip: any) => trip.id === '44828793-2d21-a116-ca34-f3acd7d56336')
-                for (const property in filtered[0].destinations) {
-                    if (filtered[0].destinations.hasOwnProperty(property)) {
-                        this.trips$.next(filtered[0].destinations[property])
-                    }
-                }
-            })
+    private displayTrips(trips: any): void {
+        const currentTrip = trips.find((trip: any) => trip.id === '44828793-2d21-a116-ca34-f3acd7d56336')
+        for (const property in currentTrip.destinations) {
+            if (currentTrip.destinations.hasOwnProperty(property)) {
+                this.trips$.next(currentTrip.destinations[property])
+            }
+        }
     }
 
     public addDestination(destination: TripsterDestination) {
@@ -49,5 +39,4 @@ export class TripService {
     public getDestinations(): Observable<TripsterDestination> {
         return this.trips$.asObservable()
     }
-
 }
