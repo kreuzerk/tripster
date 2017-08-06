@@ -43,7 +43,6 @@ export class TripService {
     public addDestination(destination: TripsterDestination) {
         const postKey = this.database.database.ref().child('destinations').push().key
         this.database.database.ref().update({['trips/0/destinations/' + postKey]: destination})
-        this.trips$.next(destination)
     }
 
     public getDestinations(): Observable<TripsterDestination> {
