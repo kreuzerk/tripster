@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {ObjectHelper} from '../../../core/helpers/object.helper.service';
 import {TripsterDestination} from '../model/tripster-destination.model';
-import {TripUIDService} from './trip-uid.service';
 
 @Injectable()
 export class TripService {
@@ -20,7 +19,7 @@ export class TripService {
 
     constructor(private database: AngularFireDatabase, private objectHelper: ObjectHelper) {
         this.trips$ = this.database.list('/trips', {query: this.query})
-            .map((trip: any) => trip[0].destinations)
+            .map((trip: any) => trip.length !== 0 ? trip[0].destinations : trip)
             .map((destinations: any) => this.objectHelper.transformObjectToArray(destinations))
     }
 
