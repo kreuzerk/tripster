@@ -8,7 +8,7 @@ import {TripsterAddressSearchComponent} from './tipster-inputs/tripster-destinat
 import {TripsterDestinationComponent} from './tipster-inputs/tripster-destination/tripster-destination.component';
 import {TripsterInputsComponent} from './tipster-inputs/tripster-inputs.component';
 import {TripsterMapComponent} from './tripster-map/tripster-map.component';
-import {TripsterEditorComponent} from './trispter-editor.component';
+import {TripsterEditorComponent} from './tripster-editor.component';
 import {AgmCoreModule} from '@agm/core';
 import {tripsterEditorRoutes} from './tripster-editor.routing';
 import {NewTripComponent} from './new-trip/new-trip.component';
