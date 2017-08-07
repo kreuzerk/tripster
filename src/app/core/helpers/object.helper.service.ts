@@ -7,6 +7,9 @@ import {Injectable} from '@angular/core';
 export class ObjectHelper {
 
     public transformObjectToArray(source: any): Array<any> {
-        return Object.keys(source).map(key => source[key])
+        if (source) {
+            return Object.keys(source).map(key => source[key])
+        }
+        return []
     }
 }

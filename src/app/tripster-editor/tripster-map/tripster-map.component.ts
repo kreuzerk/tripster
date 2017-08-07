@@ -26,8 +26,14 @@ export class TripsterMapComponent implements OnInit {
     ngOnInit(): void {
         this.tripsService.getDestinations()
             .subscribe((destinations: Array<TripsterDestination>) => {
+                this.resetMapElements()
                 destinations.forEach(destination => this.createNewDestination(destination))
             })
+    }
+
+    private resetMapElements(): void {
+        this.destinations = []
+        this.paths = []
     }
 
     private createLatLngLiteral(lat: number, lng: number): any {

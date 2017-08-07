@@ -17,7 +17,9 @@ import {TripUIDService} from './trip-uid.service';
 
 @Injectable()
 export class TripService {
+
     private trips$ = new Observable<Array<any>>()
+    private currentTripUID: string
 
     constructor(private database: AngularFireDatabase, private objectHelper: ObjectHelper,
                 private tripUIDService: TripUIDService) {
@@ -25,22 +27,29 @@ export class TripService {
         const trips$ = this.database.list('/trips')
         this.trips$ = Observable.combineLatest(trips$, tripUID$,
             (trips, tripUID) => ({trips, tripUID}))
-            .map((filterAndItems) => filterAndItems.trips
+            .map(filterAndItems => filterAndItems.trips
                 .filter((trip: TripsterTrip) => trip.id === filterAndItems.tripUID)
             )
+            .do(trip => {
+                if (trip[0]) {
+                    this.currentTripUID = trip[0].$key
+                }
+            })
             .map((trip: any) => trip.length !== 0 ? trip[0].destinations : trip)
             .map((destinations: any) => this.objectHelper.transformObjectToArray(destinations))
     }
 
     public addDestination(destination: TripsterDestination) {
         const postKey = this.database.database.ref().child('destinations').push().key
-        this.database.database.ref().update({['trips/0/destinations/' + postKey]: destination})
+        console.log('TripUID', this.currentTripUID)
+        this.database.database.ref().update({[`trips/${this.currentTripUID}/destinations/` + postKey]: destination})
     }
 
-    public createNewTrip(tripId: string): void {
+    public createNewTrip(): void {
+        const newTripId = this.tripUIDService.createNewTripUID()
         const newTrip = {
             destinations: [],
-            id: tripId
+            id: newTripId
         }
         const postKey = this.database.database.ref().child('trips').push().key
         this.database.database.ref().update({['trips/' + postKey]: newTrip})

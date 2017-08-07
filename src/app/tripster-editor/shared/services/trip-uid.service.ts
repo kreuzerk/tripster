@@ -22,9 +22,10 @@ export class TripUIDService {
         this.saveExistingTripUID(tripUID)
     }
 
-    public createNewTripUID(): void {
+    public createNewTripUID(): string {
         const newTripUID = UUID.UUID()
         this.saveExistingTripUID(newTripUID)
+        return newTripUID
     }
 
     public saveExistingTripUID(uid: string): void {

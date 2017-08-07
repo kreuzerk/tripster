@@ -12,12 +12,10 @@ import {TripService} from '../shared/services/trips.service';
 })
 export class NewTripComponent {
 
-    constructor(private tripUIDService: TripUIDService, public tripService: TripService, private router: Router) {
+    constructor(private tripService: TripService) {
     }
 
     public createNewTrip(): void {
-        const newTripUID = this.tripUIDService.createNewTripUID()
-        // this.tripService.createNewTrip(newTripUID)
-        this.router.navigate(['editor', newTripUID])
+        this.tripService.createNewTrip()
     }
 }
