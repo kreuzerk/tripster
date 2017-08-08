@@ -1,7 +1,7 @@
 /**
  * Created by kevinkreuzer on 27.07.17.
  */
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TripsterDestination} from '../shared/model/tripster-destination.model';
 import {TripService} from '../shared/services/trips.service';
 
@@ -11,7 +11,7 @@ import {TripService} from '../shared/services/trips.service';
 })
 export class TripsterInputsComponent {
 
-    private destinationCounter = 1
+    destinationCounter = 1
     destinations = [this.destinationCounter]
 
     constructor(private tripService: TripService) {

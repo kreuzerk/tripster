@@ -12,7 +12,7 @@ import {TripsterDestination} from '../../shared/model/tripster-destination.model
 })
 export class TripsterDestinationComponent implements OnInit {
 
-    @Input() counter: number;
+    @Input() destinationNumber
     @Output() onDestinationCreated = new EventEmitter<TripsterDestination>();
 
     constructor() {
@@ -23,7 +23,6 @@ export class TripsterDestinationComponent implements OnInit {
 
     public createDestination(coordinates: TripsterAddressCoordinates): void {
         const newDestination = {coordinates}
-        console.log('New Destination', newDestination)
         this.onDestinationCreated.next(newDestination);
     }
 }
