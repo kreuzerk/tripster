@@ -1,5 +1,7 @@
 <tripster-destination
-        [destinationNumber]="destinationCounter"
         *ngFor="let destination of destinations"
-        (onDestinationCreated)="newDestinationCreated($event)">
+        [destinationNumber]="destination"
+        (onNewDestinationCreated)="newDestinationCreated($event)"
+        (onNewDestinationRequired)="addStop()"
+>
 </tripster-destination>

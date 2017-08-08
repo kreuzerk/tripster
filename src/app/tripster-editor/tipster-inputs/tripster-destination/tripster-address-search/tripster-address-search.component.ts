@@ -15,6 +15,7 @@ import {TripsterAddressCoordinates} from '../../../shared/model/tripster-address
 export class TripsterAddressSearchComponent implements OnInit {
 
     @Output() onAddressChanged = new EventEmitter<TripsterAddressCoordinates>()
+    @Output() onAddressValidationChanged = new EventEmitter<boolean>()
     @ViewChild('search')
     searchElementRef: ElementRef
     addressSearchControl: FormControl
@@ -49,17 +50,22 @@ export class TripsterAddressSearchComponent implements OnInit {
 
     private emitPlaceChange(place: google.maps.places.PlaceResult): void {
         if (!place) {
-            this.isAddressValid = false
+            this.changeAddressValidation(false)
             return
         }
         if (place.geometry === undefined || place.geometry === null) {
-            this.isAddressValid = false
+            this.changeAddressValidation(false)
             return;
         }
-        this.isAddressValid = true
+        this.changeAddressValidation(true)
         const latitude = place.geometry.location.lat()
         const longitude = place.geometry.location.lng()
         this.onAddressChanged.next({latitude, longitude})
+    }
+
+    private changeAddressValidation(isValid: boolean): void {
+        this.isAddressValid = isValid;
+        this.onAddressValidationChanged.emit(isValid)
     }
 
     validateAddress(): void {

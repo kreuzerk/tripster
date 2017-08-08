@@ -1,0 +1,9 @@
+.add-button {
+    padding: 1px 10px 3px;
+    background-color: white;
+    color: black;
+}
+
+.glyphicon-plus {
+    font-size: 10px;
+}
