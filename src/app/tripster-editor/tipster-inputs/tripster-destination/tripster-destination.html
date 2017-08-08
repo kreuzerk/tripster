@@ -1,12 +1,17 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">
         New Destination {{destinationNumber}}
+        <button [disabled]="!areInputsValid" (click)="createNewInputBox()"
+                class="btn btn-default add-button pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
     </div>
     <div class="panel-body">
         <div>
             <label for="destinationInput">Destination</label>
             <tripster-address-search id="destinationInput"
-                                     (onAddressChanged)="createDestination($event)">
+                                     (onAddressChanged)="createDestination($event)"
+                                     (onAddressValidationChanged)="changeDestinationValidation($event)">
             </tripster-address-search>
         </div>
     </div>

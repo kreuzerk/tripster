@@ -8,12 +8,15 @@ import {TripsterDestination} from '../../shared/model/tripster-destination.model
 
 @Component({
     selector: 'tripster-destination',
-    templateUrl: './tripster-destination.html'
+    templateUrl: './tripster-destination.html',
+    styleUrls: ['./tripster-destination.css']
 })
 export class TripsterDestinationComponent implements OnInit {
 
     @Input() destinationNumber
-    @Output() onDestinationCreated = new EventEmitter<TripsterDestination>();
+    @Output() onNewDestinationCreated = new EventEmitter<TripsterDestination>()
+    @Output() onNewDestinationRequired = new EventEmitter<any>();
+    private areInputsValid: boolean = false;
 
     constructor() {
     }
@@ -23,6 +26,14 @@ export class TripsterDestinationComponent implements OnInit {
 
     public createDestination(coordinates: TripsterAddressCoordinates): void {
         const newDestination = {coordinates}
-        this.onDestinationCreated.next(newDestination);
+        this.onNewDestinationCreated.emit(newDestination)
+    }
+
+    public createNewInputBox(): void {
+        this.onNewDestinationRequired.emit();
+    }
+
+    public changeDestinationValidation(isValid: boolean): void {
+        this.areInputsValid = isValid
     }
 }

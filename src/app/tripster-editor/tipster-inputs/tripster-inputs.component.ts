@@ -11,7 +11,7 @@ import {TripService} from '../shared/services/trips.service';
 })
 export class TripsterInputsComponent {
 
-    destinationCounter = 1
+    private destinationCounter = 1
     destinations = [this.destinationCounter]
 
     constructor(private tripService: TripService) {
@@ -19,7 +19,6 @@ export class TripsterInputsComponent {
 
     public newDestinationCreated(newDestination: TripsterDestination): void {
         this.tripService.addDestination(newDestination)
-        this.addStop()
     }
 
     public addStop() {
