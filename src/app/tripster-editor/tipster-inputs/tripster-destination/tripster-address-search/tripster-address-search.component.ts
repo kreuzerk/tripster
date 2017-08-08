@@ -6,7 +6,7 @@ import {MapsAPILoader} from '@agm/core'
 import {FormControl, Validators} from '@angular/forms'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/observable/fromPromise'
-import {TripsterAddressCoordinates} from './tripster-address-coordinates.model';
+import {TripsterAddressCoordinates} from '../../../shared/model/tripster-address-coordinates.model';
 
 @Component({
     selector: 'tripster-address-search',

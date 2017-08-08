@@ -3,8 +3,8 @@
  */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {} from '@types/googlemaps';
-import {TripsterAddressCoordinates} from './tripster-address-search/tripster-address-coordinates.model';
-import {TripsterDestination} from './tripster-destination.model';
+import {TripsterAddressCoordinates} from '../../shared/model/tripster-address-coordinates.model';
+import {TripsterDestination} from '../../shared/model/tripster-destination.model';
 
 @Component({
     selector: 'tripster-destination',
@@ -12,7 +12,7 @@ import {TripsterDestination} from './tripster-destination.model';
 })
 export class TripsterDestinationComponent implements OnInit {
 
-    @Input() counter: number;
+    @Input() destinationNumber
     @Output() onDestinationCreated = new EventEmitter<TripsterDestination>();
 
     constructor() {
@@ -23,7 +23,6 @@ export class TripsterDestinationComponent implements OnInit {
 
     public createDestination(coordinates: TripsterAddressCoordinates): void {
         const newDestination = {coordinates}
-        console.log('New Destination', newDestination)
         this.onDestinationCreated.next(newDestination);
     }
 }

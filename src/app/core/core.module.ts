@@ -8,6 +8,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {LocalStorageService} from './localStorage/localStorage.service';
 import {TripsterEditorModule} from '../tripster-editor/tripster-editor.module';
+import {ObjectHelper} from './helpers/object.helper.service';
 
 @NgModule({
     imports: [
@@ -17,7 +18,10 @@ import {TripsterEditorModule} from '../tripster-editor/tripster-editor.module';
     ],
     declarations: [NavbarComponent],
     exports: [NavbarComponent],
-    providers: [LocalStorageService]
+    providers: [
+        LocalStorageService,
+        ObjectHelper
+    ]
 })
 export class CoreModule {
 

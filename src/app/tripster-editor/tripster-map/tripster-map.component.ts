@@ -4,8 +4,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LatLngLiteral} from '@agm/core';
 import {TripsterPath} from './tripster-path.model';
-import {TripsterDestination} from '../tipster-inputs/tripster-destination/tripster-destination.model';
-import {TripService} from '../trips.service';
+import {TripsterDestination} from '../shared/model/tripster-destination.model';
+import {TripService} from '../shared/services/trips.service';
 
 @Component({
     selector: 'tripster-map',
@@ -25,7 +25,15 @@ export class TripsterMapComponent implements OnInit {
 
     ngOnInit(): void {
         this.tripsService.getDestinations()
-            .subscribe((destination: TripsterDestination) => this.createNewDestination(destination))
+            .subscribe((destinations: Array<TripsterDestination>) => {
+                this.resetMapElements()
+                destinations.forEach(destination => this.createNewDestination(destination))
+            })
+    }
+
+    private resetMapElements(): void {
+        this.destinations = []
+        this.paths = []
     }
 
     private createLatLngLiteral(lat: number, lng: number): any {

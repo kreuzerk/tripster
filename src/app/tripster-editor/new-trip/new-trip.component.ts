@@ -2,8 +2,9 @@
  * Created by kevinkreuzer on 05.08.17.
  */
 import {Component} from '@angular/core';
-import {TripUIDService} from '../trip-uid.service';
+import {TripUIDService} from '../shared/services/trip-uid.service';
 import {Router} from '@angular/router';
+import {TripService} from '../shared/services/trips.service';
 
 @Component({
     selector: 'tripster-new-trip',
@@ -11,11 +12,10 @@ import {Router} from '@angular/router';
 })
 export class NewTripComponent {
 
-    constructor(private tripUIDService: TripUIDService, private router: Router) {
+    constructor(private tripService: TripService) {
     }
 
     public createNewTrip(): void {
-        const newTripUID = this.tripUIDService.createAndSaveNewTripUID()
-        this.router.navigate(['editor', newTripUID])
+        this.tripService.createNewTrip()
     }
 }
