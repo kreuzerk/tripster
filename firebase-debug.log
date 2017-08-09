@@ -1,0 +1,39 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Wed Aug 09 2017 06:58:41 GMT+0200 (CEST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tripster-87dda  
+ Wed Aug 09 2017 06:58:41 GMT+0200 (CEST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tripster-87dda/tokens  
+ Wed Aug 09 2017 06:58:45 GMT+0200 (CEST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Wed Aug 09 2017 06:59:41 GMT+0200 (CEST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tripster-87dda  
+ Wed Aug 09 2017 06:59:41 GMT+0200 (CEST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tripster-87dda/tokens  
+ Wed Aug 09 2017 06:59:42 GMT+0200 (CEST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'tripster-87dda'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing dist/ directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/tripster-87dda/uploads/-Kr4MCpNUTm-qpFJh3WA?fileCount=18&message=  
+ Wed Aug 09 2017 06:59:45 GMT+0200 (CEST)
